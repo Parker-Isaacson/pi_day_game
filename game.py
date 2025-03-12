@@ -11,7 +11,7 @@ class PiMemorizationGame:
         self.root = root
         self.root.title("Pi Memorization Game")
         self.root.configure(bg="#1E1E2E")
-        
+
         self.teams = teams
         self.scores = {team: 0.0 for team in self.teams}
         self.current_team = 0
@@ -83,9 +83,12 @@ class PiMemorizationGame:
             self.message_label.config(text=f"{self.teams[self.current_team]} is done!", fg="#F38BA8")
             self.current_team += 1
             if self.current_team >= len(self.teams):
-                self.end_game()
+                self.root.after(5000, self.end_game)
             else:
-                self.start_round()
+                self.entry.config(state=tk.DISABLED)
+                self.submit_button.config(state=tk.DISABLED)
+                self.root.after(2500, self.start_round)
+                
     
     def end_game(self):
         winner = max(self.scores, key=self.scores.get)
