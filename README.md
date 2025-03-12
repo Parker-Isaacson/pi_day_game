@@ -1,5 +1,5 @@
 # pi_day_game
-##Game for PI Day, CUSEC
+## Game for PI Day, CUSEC
 
 You are able to input the teams that will be played with by adding them as arguements.
 The scores of each team are displayed to the terminal after the game has concluded.
