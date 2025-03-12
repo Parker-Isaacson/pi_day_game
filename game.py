@@ -11,6 +11,9 @@ class PiMemorizationGame:
         self.root = root
         self.root.title("Pi Memorization Game")
         self.root.configure(bg="#1E1E2E")
+        
+        self.root.attributes('-fullscreen', True)
+        self.root.bind("<Escape>", self.exit_fullscreen)
 
         self.teams = teams
         self.scores = {team: 0.0 for team in self.teams}
@@ -41,6 +44,9 @@ class PiMemorizationGame:
         self.message_label.pack(pady=10)
         
         self.start_round()
+    
+    def exit_fullscreen(self, event=None):
+        self.root.attributes('-fullscreen', False)
         
     def get_score_text(self):
         return "  |  ".join([f"{team}: {score:.2f}" for team, score in self.scores.items()])
