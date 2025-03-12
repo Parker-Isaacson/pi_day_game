@@ -3,7 +3,7 @@ from tkinter import messagebox
 import time
 
 # Digits of Pi
-PI_DIGITS = """1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825 3421170679 4610126483 6999892256 9596881592 0560010165 5256375679""".replace(" ","", -1).replace('\n','',-1)
+PI_DIGITS = """1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825 3421170679 4610126483 6999892256 9596881592 0560010165 5256375679""".replace(" ", "").replace('\n', '')
 
 class PiMemorizationGame:
     def __init__(self, root):
@@ -12,7 +12,7 @@ class PiMemorizationGame:
         self.root.configure(bg="#1E1E2E")  # Set background color
         
         self.teams = ["Team A", "Team B", "Team C", "Team D"]
-        self.scores = {team: 0 for team in self.teams}
+        self.scores = {team: 0.0 for team in self.teams}
         self.current_team = 0
         self.digits_to_add = 2  # Start with 3.14
         self.start_time = None  # Track start time
@@ -74,7 +74,7 @@ class PiMemorizationGame:
         if guess == correct_sequence:
             self.current_index += self.more_digits
             self.digits_to_add += self.more_digits
-            self.scores[self.teams[self.current_team]] += 1 * (1 / elapsed_time)
+            self.scores[self.teams[self.current_team]] += 1 + ( 1 / elapsed_time )
             self.message_label.config(text=f"Great job! You took {elapsed_time:.2f} seconds.", fg="#A6E3A1")
         else:
             self.message_label.config(text="Incorrect sequence! Switching teams.", fg="#F38BA8")
@@ -101,4 +101,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     game = PiMemorizationGame(root)
     root.mainloop()
-
